@@ -8,3 +8,57 @@
 .mod-row{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:8px}
 .mod-row small{color:#a4aab5}.mod-row input{width:100%;padding:11px;background:#111923;color:#f2e8d4;border:1px solid #4c5360;border-radius:5px}
 .danger-text{color:#ff9b96}#adminButton[hidden]{display:none}
+
+/* Distinct top-level tabs — retain the original Twilight Trials palette. */
+[data-view][hidden]{display:none!important}
+main{min-height:calc(100vh - 280px)}
+.desktop-nav a{transition:color .18s ease}
+.desktop-nav a.active:after{box-shadow:0 -2px 12px #d7b77e44}
+.mobile-nav a.active{color:var(--gold);border-left:2px solid var(--gold);padding-left:12px;background:#d7b77e0d}
+.featured-section[data-view],.content-section[data-view]{padding-top:76px;min-height:65vh}
+.community-section[data-view]{min-height:65vh}
+@media(max-width:800px){.featured-section[data-view],.content-section[data-view]{padding-top:47px}.community-section[data-view]{min-height:60vh}}
+
+/* OddSpeedruns refinement — clearer hierarchy with the same twilight palette */
+:root{--muted:#abb6bc;--border:#34444e}
+body{line-height:1.6}
+.brand-name{letter-spacing:.065em}
+.brand-name strong{color:var(--gold)}
+.brand-name small{letter-spacing:.13em;opacity:.88}
+.hero-content p,.section-heading p,.community-copy p,.challenge-detail p,.feature-card p{color:#c4cbd0;line-height:1.75}
+.desktop-nav a,.mobile-nav a{font-weight:700}
+.section-heading h2,.highlights-heading h2{line-height:1.22}
+.category-option-text small,.date-cell,.board-footer,.mini-overline{color:#b1bdc3}
+.leaderboard-table td{padding-top:18px;padding-bottom:18px}
+.leaderboard-table th{letter-spacing:.10em}
+.button,.text-action,.game-tab{transition:background-color .18s,border-color .18s,color .18s,transform .18s}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.home-highlights{max-width:1380px;margin:0 auto;padding:72px 5vw 94px}
+.highlights-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:26px}
+.highlights-heading h2{font-family:var(--display);font-size:clamp(29px,3.1vw,43px);font-weight:500;color:var(--ink);margin:15px 0 8px}
+.highlights-heading h2 em{color:var(--gold);font-weight:400}
+.highlights-heading p{color:#c4cbd0;margin:0}
+.highlight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.highlight-card{min-width:0;display:flex;flex-direction:column;min-height:305px;padding:32px;border:1px solid #394951;background:linear-gradient(135deg,rgba(35,46,52,.94),rgba(17,26,34,.98));border-radius:8px;position:relative;overflow:hidden}
+.highlight-card:before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent 75%)}
+.highlight-label{color:#ddc392;letter-spacing:.14em;font-size:11px;font-weight:800;display:flex;align-items:center;gap:10px}
+.highlight-icon{font-size:18px;letter-spacing:0}
+.highlight-game{font-size:12px;letter-spacing:.06em;color:#b9c6ca;margin-top:31px}
+.highlight-card h3{font-family:var(--display);font-size:clamp(20px,2vw,28px);line-height:1.3;font-weight:500;margin:7px 0 4px;color:#f4f0e7}
+.highlight-time{font-family:var(--display);font-size:clamp(26px,3vw,40px);color:#e7c68e;letter-spacing:.01em;font-variant-numeric:tabular-nums;margin:10px 0}
+.highlight-details{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;color:#b4c0c5;font-size:13px}
+.highlight-runner{font-weight:800;color:#f5f0e5}
+.highlight-actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:auto;padding-top:28px}
+.highlight-actions a,.highlight-link{color:var(--gold);text-decoration:none;font-weight:700;font-size:13px;background:none;border:none;padding:0;cursor:pointer}
+.highlight-actions a:hover,.highlight-link:hover{text-decoration:underline}
+.highlight-empty{display:flex;flex-direction:column;justify-content:center;flex:1;padding:20px 0;color:#b7c2c7}
+.highlight-empty strong{font-family:var(--display);font-size:22px;color:#eee8df;font-weight:500}
+.highlight-empty p{max-width:390px;line-height:1.7}
+@media(max-width:720px){.home-highlights{padding:50px 5vw 65px}.highlight-grid{grid-template-columns:1fr}.highlight-card{padding:25px;min-height:285px}.highlights-heading{align-items:start;flex-direction:column;gap:12px}}
+
+/* Browse controls / Palm Games community styling */
+.browse-toolbar{display:flex;gap:18px;flex-wrap:wrap;align-items:end;border:1px solid #38474e;background:linear-gradient(120deg,#1c292e,#152027);padding:19px 23px;margin:24px 0 22px;border-radius:7px}
+.browse-toolbar.compact-toolbar{margin-bottom:15px}.toolbar-select,.toolbar-search{display:flex;flex-direction:column;gap:8px;flex:1 1 240px;max-width:440px}.toolbar-select>span,.toolbar-search>span{font-size:10px;font-weight:800;letter-spacing:.17em;color:#d5bd8d}.toolbar-select select,.toolbar-search input{width:100%;background:#101a20;color:#f4f0e7;border:1px solid #56636a;padding:13px 15px;border-radius:5px;font-size:13px;min-height:46px}.toolbar-select select{cursor:pointer}.toolbar-search-input{position:relative}.toolbar-search-input svg{position:absolute;left:14px;top:15px;width:17px;fill:none;stroke:#d3c4a4;stroke-width:1.8}.toolbar-search-input input{padding-left:42px}.toolbar-copy{display:flex;flex-direction:column;gap:4px}.toolbar-copy strong{font-size:13px;color:#f1e9db}.toolbar-copy small{font-size:11px;color:#bac5c8}
+.discord-section{padding:30px max(5vw,22px) 68px;background:#0c141a}.discord-card{max-width:1320px;margin:auto;border:1px solid #4b534f;border-radius:8px;background:radial-gradient(ellipse at 85% 5%,#334337 0%,transparent 54%),linear-gradient(145deg,#202b2c,#111c22);padding:clamp(24px,4vw,52px);box-shadow:0 22px 54px #0003}.discord-grid{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:40px;align-items:center}.discord-section h2,.studio-section h2{font:500 clamp(28px,3.4vw,46px)/1.18 var(--display);color:#f4f0e5;margin:17px 0}.discord-section h2 em,.studio-section h2 em{color:var(--gold);font-weight:400}.discord-section p,.studio-section p{color:#bfcbce;line-height:1.85;font-size:13px;max-width:680px}.discord-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none;padding:12px 0 0;margin:0}.discord-points li{border-left:2px solid #c9ab70;padding:4px 0 4px 12px;font-size:12px;color:#e5e2d9;line-height:1.6}.discord-actions{display:flex;flex-direction:column;gap:13px;align-items:stretch}.discord-actions .button{text-align:center;justify-content:center}.micro-note{font-size:10px!important;line-height:1.6!important;color:#aebdc0!important}
+.studio-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,370px);align-items:center;gap:45px;max-width:1320px;margin:0 auto;padding:55px max(5vw,22px) 85px}.studio-logo-card{min-height:240px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;border:1px solid #3c494e;background:linear-gradient(140deg,#19262d,#0e171c);padding:32px;border-radius:7px;text-align:center}.studio-logo-image{max-width:90%;max-height:155px;object-fit:contain}.studio-logo-card .micro-note{max-width:275px;margin:0}.footer-logo{letter-spacing:.06em}
+@media(max-width:850px){.discord-grid,.studio-section{grid-template-columns:1fr}.discord-points{grid-template-columns:1fr}.studio-section{padding-top:42px;gap:22px}.studio-logo-card{min-height:195px}}@media(max-width:530px){.browse-toolbar{padding:16px}.discord-section{padding-bottom:25px}.discord-card{padding:24px}}

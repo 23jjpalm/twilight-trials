@@ -1,4 +1,4 @@
-# Twilight Trials — GitHub Pages + Supabase Edition
+# OddSpeedruns — GitHub Pages + Supabase Edition
 
 A free-tier-friendly, static HTML/CSS/JavaScript speedrunning site with Supabase Auth, PostgreSQL, and server-enforced moderator permissions. **Starts with ZERO categories, ZERO runs, and ZERO demo accounts.** You do **not** run `python server.py`.
 
@@ -75,3 +75,46 @@ where lower(username) = lower('YOUR_USERNAME');
 **Dashboard button missing** — run the one-time admin SQL promotion, refresh, and confirm the username is correct.
 
 **Site 404 on GitHub Pages** — make sure the repository's Pages setting is `main / (root)` and the `index.html` file is at the root.
+
+
+## Public leaderboard fix (October 2026)
+
+This edition allows signed-out visitors to browse published categories and verified runs.
+The frontend skips the authenticated-user lookup when there is no session.
+No database migration is necessary if you originally ran the supplied `supabase-setup.sql`,
+which already grants anonymous read access with row-level security policies.
+
+To update an existing GitHub Pages installation, replace only `app.js` from this archive
+and commit the change. Signing in is still required for submissions and moderator actions.
+
+
+## Tabbed navigation update
+
+This build changes the top navigation to real views. Discover, Leaderboards, Categories, and Community are mutually exclusive, navigable via URL hashes (`#home`, `#leaderboards`, `#categories`, `#community`). No backend or database changes are required. The initial view is Discover; the game selector inside Leaderboards remains functional. Public leaderboards continue to work while logged out.
+
+**For an existing GitHub Pages deployment:** replace only `index.html`, `styles.css`, and `app.js`. Preserve your working `config.js` and Supabase project settings.
+
+
+## Homepage spotlight
+The homepage dynamically shows the most recently **submitted verified** run (ordered by submission timestamp), and the fastest verified time in the category with the greatest number of verified runs. Empty states display automatically until verified runs exist. Updating the site on GitHub only requires replacing `index.html`, `styles.css`, and `app.js`; preserve your configured `config.js`.
+
+## Palm Games branding, Discord, and new game finder
+
+- The **Community** tab now includes a Discord invitation and a dedicated **Made by Palm Games** studio credit.
+- The Palm Games logo is included at `images/palm-games-logo.png` and displayed on the Community page.
+- `community-config.js` is already set to your Discord invite (`https://discord.gg/5P9ZHUfKJz`). Include this file when uploading to GitHub.
+- The **Leaderboards** and **Categories** tabs have a game dropdown; Categories also has its own search field. This version supports the two existing games (`tphd`, `tp`) in the original Supabase schema. Adding entirely new games requires a future database and moderator-form update.
+
+## Username + password accounts (no email requested)
+
+**Important setup step:** In Supabase **Authentication → Sign In / Providers → Email**, turn off **Confirm email**. Keep the Email provider enabled; Supabase Password Auth still needs an email string internally. The client generates a synthetic login identifier in the form `lowercase_username@accounts.oddspeedruns.com`, which is never meant to receive messages. The account form no longer asks for an email.
+
+- You must own or control `oddspeedruns.com` (the generated email domain). No mail server setup is required for the login flow when email confirmation is off.
+- These synthetic addresses are **not verified**, and **password-reset emails will not work**. There is currently no self-service recovery. Before a public launch, add a secure recovery process / consider a custom username-based auth backend with appropriate abuse controls and rate limiting.
+- This removes the need to send a confirmation email for newly created accounts, but **Supabase signup and authentication API rate limits still apply**.
+- **Existing users** registered with real emails are *not migrated automatically*. They can continue signing in with their **email address** in the Username field. Don't delete/recreate existing accounts: doing so would orphan their runs. To support username-only login for old accounts would require a careful migration.
+- A user's displayed name continues to be taken from their Supabase profile, rather than typed into submissions.
+
+### Updating your existing GitHub Pages site
+
+Upload these changed files: `index.html`, `styles.css`, `app.js`, `community-config.js`, and `images/palm-games-logo.png`. Keep your working `config.js`, `data.js`, and Supabase tables intact. **No SQL changes needed for these updates.**
