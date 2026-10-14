@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1016" />
+  <meta name="description" content="Twilight Trials — an independent community leaderboard for wonderfully unusual fantasy adventure speedruns." />
+  <title>Twilight Trials — Unusual Speedrun Leaderboards</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a href="#home" class="brand" aria-label="Twilight Trials home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><path d="M22 2 27 15 41 22 27 28 22 42 16 28 3 22 16 15Z" stroke="currentColor" stroke-width="1.3"/><path d="M22 12 25 20 32 22 25 25 22 33 19 25 12 22 19 20Z" fill="currentColor"/><circle cx="22" cy="22" r="19.2" stroke="currentColor" opacity=".45"/></svg></span>
+        <span class="brand-name">TWILIGHT <strong>TRIALS</strong><small>THE UNCONVENTIONAL SPEEDRUN ARCHIVE</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home" data-nav="home" class="active">Discover</a>
+        <a href="#leaderboards" data-nav="leaderboards">Leaderboards</a>
+        <a href="#categories" data-nav="categories">Categories</a>
+        <a href="#community" data-nav="community">Community</a>
+      </nav>
+      <div class="top-actions"><button class="icon-button" id="searchToggle" title="Search" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="button button-outline header-submit" data-action="submit">+ Submit run</button><button class="avatar-button" data-action="profile" title="My account" id="accountButton">↗</button><button class="button button-outline" data-action="moderate" id="adminButton" hidden>Dashboard</button><button class="menu-button" id="menuToggle" aria-label="Open menu">☰</button></div>
+    </header>
+    <div id="mobileNav" class="mobile-nav" hidden><a href="#home">Discover</a><a href="#leaderboards">Leaderboards</a><a href="#categories">Categories</a><a href="#community">Community</a><button data-action="submit">Submit a run</button></div>
+    <div id="searchBar" class="search-bar" hidden><span>⌕</span><input id="globalSearch" type="search" placeholder="Search challenges, runners, and records…" autocomplete="off"/><button id="searchClose" aria-label="Close search">✕</button></div>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="sigil-outer"><div class="sigil-inner"><span>✦</span></div></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="fog fog-one"></div><div class="fog fog-two"></div></div>
+        <div class="hero-content"><div class="eyebrow"><span class="dot"></span> COMMUNITY-POWERED SPEEDRUNNING <span class="eyebrow-rule"></span> EST. 2026</div><h1>Legends are made.<br/><em>Records are broken.</em></h1><p>Forget saving the world. How fast can you catch a fish, anger a swarm, or completely embarrass yourself? The home of <strong>unusual adventure speedruns.</strong></p><div class="hero-buttons"><a class="button button-primary" href="#leaderboards">Explore leaderboards <span>↗</span></a><button class="button button-ghost" data-action="submit"><span class="play-triangle">▷</span> Submit your attempt</button></div><div class="hero-note">AN UNOFFICIAL FAN-MADE COMMUNITY · NOT AFFILIATED WITH ANY GAME PUBLISHER</div></div>
+        <div class="hero-index"><span>01 / 03</span><i></i><span>THE TRIALS BEGIN</span></div>
+      </section>
+
+      <section class="stats-band" aria-label="Community statistics"><div><span class="stat-icon">✧</span><strong id="statRuns">—</strong><small>RECORDED RUNS</small></div><div><span class="stat-icon">♜</span><strong id="statRunners">—</strong><small>UNIQUE RUNNERS</small></div><div><span class="stat-icon">⚑</span><strong id="statCategories">—</strong><small>CHALLENGE CATEGORIES</small></div><div><span class="stat-icon">◈</span><strong id="statVerified">—</strong><small>VERIFIED RECORDS</small></div></section>
+
+      <section class="content-section" id="leaderboards">
+        <div class="section-overline"><span>✧</span> THE HALL OF RECORDS <span class="line"></span> 01</div><div class="section-heading"><div><h2>Challenge <em>leaderboards</em></h2><p>Every ridiculous quest deserves a champion.</p></div><button class="text-action" data-action="add-category">Propose a category <span>↗</span></button></div>
+        <div class="game-tabs" id="gameTabs" role="tablist" aria-label="Select game"></div>
+        <div class="dashboard-grid">
+          <aside class="category-panel"><div class="panel-header"><span>CHALLENGE CATEGORIES</span><span id="categoryCount">00</span></div><div class="category-filter"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg><input id="categorySearch" type="search" placeholder="Find a challenge…"/></div><div id="categoryList" class="category-list"></div><button class="create-category" data-action="add-category">＋ Suggest a new challenge</button></aside>
+          <div class="leaderboard-area"><div id="selectedChallenge" class="selected-challenge"></div><div class="leaderboard-card"><div class="leaderboard-top"><div><span class="mini-overline">OFFICIAL RANKINGS</span><h3>World leaderboard <span id="runCountLabel" class="count-badge"></span></h3></div><div class="board-tools"><label for="statusFilter" class="sr-only">Filter runs</label><select id="statusFilter"><option value="verified">Verified runs</option><option value="all">All submissions</option><option value="pending">Pending review</option></select><button id="boardRefresh" title="Refresh rankings" aria-label="Refresh rankings">↻</button></div></div><div class="table-scroll"><table class="leaderboard-table"><thead><tr><th>RANK</th><th>RUNNER</th><th>TIME</th><th>DATE</th><th>PROOF</th></tr></thead><tbody id="leaderboardBody"></tbody></table></div><div class="board-footer"><span id="boardFooterLabel">Verified community submissions</span><button class="text-action" data-action="submit">Got a faster run? <span>↗</span></button></div></div><div class="rules-card"><div class="rules-symbol">✧</div><div><span class="mini-overline">KNOW BEFORE YOU RUN</span><h3>Category rules</h3><p id="categoryRules"></p></div></div></div>
+        </div>
+      </section>
+
+      <section class="featured-section" id="categories"><div class="section-overline"><span>✧</span> PICK YOUR POISON <span class="line"></span> 02</div><div class="section-heading"><div><h2>Beautifully <em>absurd.</em></h2><p>Browse challenges that no hero was ever meant to attempt.</p></div></div><div id="featureCards" class="feature-cards"></div></section>
+
+      <section class="community-section" id="community"><div class="community-glow"></div><div class="community-copy"><div class="section-overline"><span>✧</span> THE COMMUNITY <span class="line"></span> 03</div><h2>Greatness comes<br/>in <em>strange forms.</em></h2><p>One questionable idea, one perfectly timed button press, and one video to prove it. Join the leaderboard, invent a new challenge, and give the community something to beat.</p><div class="community-buttons"><button class="button button-primary" data-action="submit">Submit your first run <span>↗</span></button><button class="button button-outline" data-action="add-category">Suggest a challenge</button></div></div><div class="community-emblem" aria-hidden="true"><div class="emblem-circle"><span>✦</span><small>STAY STRANGE<br/>RUN FAST</small></div></div></section>
+    </main>
+    <footer class="footer"><div><span class="footer-logo">✧ TWILIGHT TRIALS</span><p>A fan-made home for unusual speedruns. Original interface design; no official affiliation or endorsement.</p></div><div class="footer-links"><a href="#leaderboards">Leaderboards</a><a href="#categories">Categories</a><button data-action="moderate">Review queue</button><button data-action="about">About & data</button></div><span class="footer-copy">© 2026 TWILIGHT TRIALS · BUILT FOR THE BIT</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="modalOverlay" class="modal-overlay" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="modalClose" class="modal-close" aria-label="Close dialog">✕</button><div id="modalContent"></div></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script src="config.js"></script><script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
