@@ -13,7 +13,9 @@ async function api(path,data){
  if(path==='register'){const username=data.username.trim();if(!/^[A-Za-z0-9_]{3,24}$/.test(username))throw Error('Use 3–24 letters, numbers or underscores for the username.');const res=check(await s.auth.signUp({email:data.email.trim(),password:data.password,options:{data:{username},emailRedirectTo:location.origin+location.pathname}}));return {needsConfirmation:!res.session}}
  if(path==='logout'){check(await s.auth.signOut());return {ok:true}}
  if(path==='state'){
-  const {data:{user},error}=await s.auth.getUser();if(error)throw error;
+  const {data:{session},error:sessionError}=await s.auth.getSession();if(sessionError)throw sessionError;
+  let user=null;
+  if(session){const result=await s.auth.getUser();if(result.error)throw result.error;user=result.data.user;}
   const profile=user?check(await s.from('profiles').select('id,username,role,banned,created_at').eq('id',user.id).single()):null;
   const categories=check(await s.from('categories').select('*').order('created_at',{ascending:true})).map(c=>({...c}));
   const records=check(await s.from('runs').select('id,category_id,user_id,time_text,milliseconds,run_date,proof_url,status,note,created_at').order('milliseconds',{ascending:true}));
