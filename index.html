@@ -29,18 +29,15 @@
     <main>
       <section class="hero" id="home" data-view="home">
         <div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="sigil-outer"><div class="sigil-inner"><span>✦</span></div></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="fog fog-one"></div><div class="fog fog-two"></div></div>
-        <div class="hero-content"><div class="eyebrow"><span class="dot"></span> COMMUNITY-POWERED SPEEDRUNNING <span class="eyebrow-rule"></span> EST. 2026</div><h1>Legends are made.<br/><em>Records are broken.</em></h1><p>Forget saving the world. How fast can you catch a fish, anger a swarm, or completely embarrass yourself? The home of <strong>unusual adventure speedruns.</strong></p><div class="hero-buttons"><a class="button button-primary" href="#leaderboards">Explore leaderboards <span>↗</span></a><button class="button button-ghost" data-action="submit"><span class="play-triangle">▷</span> Submit your attempt</button></div><div class="hero-note">AN UNOFFICIAL FAN-MADE COMMUNITY · NOT AFFILIATED WITH ANY GAME PUBLISHER</div></div>
+        <div class="hero-content"><div class="eyebrow"><span class="dot"></span> COMMUNITY-POWERED SPEEDRUNNING <span class="eyebrow-rule"></span> EST. 2026</div><h1>Speedruns that<br/><em>nobody asked for.</em></h1><p>Pick a random challenge, do something completely pointless in a game, and see if anyone can beat your time. <strong>Any game. Any weird idea.</strong></p><div class="hero-buttons"><a class="button button-primary" href="#leaderboards">Explore leaderboards <span>↗</span></a><button class="button button-ghost" data-action="submit"><span class="play-triangle">▷</span> Submit your attempt</button></div><div class="hero-note">AN UNOFFICIAL FAN-MADE COMMUNITY · NOT AFFILIATED WITH ANY GAME PUBLISHER</div></div>
         <div class="hero-index"><span>01 / 03</span><i></i><span>THE ODD RUNS BEGIN</span></div>
       </section>
 
       <section class="stats-band" data-view="home" aria-label="Community statistics"><div><span class="stat-icon">✧</span><strong id="statRuns">—</strong><small>RECORDED RUNS</small></div><div><span class="stat-icon">♜</span><strong id="statRunners">—</strong><small>UNIQUE RUNNERS</small></div><div><span class="stat-icon">⚑</span><strong id="statCategories">—</strong><small>CHALLENGE CATEGORIES</small></div><div><span class="stat-icon">◈</span><strong id="statVerified">—</strong><small>VERIFIED RECORDS</small></div></section>
 
-      <section class="home-highlights" data-view="home" aria-label="Community spotlight">
-        <div class="highlights-heading"><div><div class="section-overline"><span>✧</span> FROM THE LEADERBOARDS <span class="line"></span></div><h2>In the <em>spotlight.</em></h2><p>The latest verified finish and the record in our most-played challenge.</p></div><a class="text-action" href="#leaderboards">All leaderboards <span>↗</span></a></div>
-        <div class="highlight-grid">
-          <article class="highlight-card" id="recentRunCard" aria-live="polite"><div class="highlight-label"><span class="highlight-icon">↗</span> MOST RECENT VERIFIED RUN</div><div class="highlight-empty">Loading recent runs…</div></article>
-          <article class="highlight-card" id="popularRecordCard" aria-live="polite"><div class="highlight-label"><span class="highlight-icon">♛</span> RECORD · MOST-RUN CATEGORY</div><div class="highlight-empty">Loading category records…</div></article>
-        </div>
+      <section class="home-highlights" data-view="home" aria-label="Recent speedruns">
+        <div class="highlights-heading"><div><div class="section-overline"><span>✧</span> WHAT'S BEEN HAPPENING <span class="line"></span></div><h2>Recent <em>runs.</em></h2><p>Verified submissions from the community, newest first.</p></div><a class="text-action" href="#leaderboards">All leaderboards ↗</a></div>
+        <div class="spotlight-carousel"><div id="recentRunsCarousel" class="highlight-card" aria-live="polite"><div class="highlight-empty">Loading recent runs…</div></div><div class="carousel-controls"><button id="spotlightPrev" aria-label="Previous verified run">←</button><span id="carouselPosition">0 / 0</span><button id="spotlightNext" aria-label="Next verified run">→</button></div></div>
       </section>
 
       <section class="content-section" id="leaderboards" data-view="leaderboards" hidden>
